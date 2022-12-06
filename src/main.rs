@@ -19,10 +19,10 @@ if pixel_width == 1 && pixel_height == 1 {
 fn main() -> Result<(), Box<dyn Error>> {
     let mut args = env::args().skip(1);
 
-    let square_width = args.next().unwrap();
-    let square_height = args.next().unwrap();
+    let width = args.next().unwrap();
+    let height = args.next().unwrap();
 
-    lightball(square_width.parse()?, square_height.parse()?, [255, 255, 255])
+    lightball(width.parse()?, height.parse()?, [255, 255, 255])
         .unwrap()
         .save("image.png")?;
 
@@ -34,8 +34,9 @@ fn lightball(width: u32, height: u32, color: [u8; 3]) -> Option<RgbaImage> {
 
     let transparent = [255, 255, 255, 0];
 
-    // 12.5 percent in each corner 10% transparent 1% 200 1.5% 100
+    // 12.5 percent in each corner 10% transparent 1% alpha 200 1.5% alpha 100
 
+    // should be the number of pixels allowed in x axis starting in the middle
     let mut wa = 1;
     let mut mid = width / 2;
 
