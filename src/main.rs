@@ -3,19 +3,6 @@ use ::{
     std::{env, error::Error},
 };
 
-/*
-gray = 240, 240, 240, 255
-
-if pixel_width == 1 && pixel_height == 1 {
-    lightball.extend([255, 255, 255, 255]);
-} else if pixel_width == 3 && pixel_height == 3 {
-    lightball = vec![
-                transparent, gray, transparent
-                gray, white, gray,
-                transparent, gray, transparent];
-}
-*/
-
 fn main() -> Result<(), Box<dyn Error>> {
     let mut args = env::args().skip(1);
 
